@@ -1,0 +1,291 @@
+<html>
+<head><title>flipcode - 2D OBB Intersection</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-3512250068614659";
+//728x90, created 1/8/08
+google_ad_slot = "8394943283";
+google_ad_width = 728;
+google_ad_height = 90;
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br>
+
+<br><center><img src="logo_toolbox.png"></center>
+
+<font face="Verdana" size=2>This section of the <a href="index.shtml">archives</a> stores flipcode's complete Developer Toolbox collection,
+featuring a variety of mini-articles and source code contributions from our readers.</font>
+<br><br>
+
+<center>
+<table width="80%" bgcolor="#1D2530" border=0 cellspacing=0 cellpadding=0>
+<tr><td>
+<center><table cellspacing=0 cellpadding=2 border=0 width="100%"><tr><td background="comments_bar2.jpg" bgcolor="#333333" width="100" valign="center"><font size=1>&nbsp;</font></td></tr></table></center>
+<center>
+<font size=1><br></font>
+
+<center>
+
+<table width="95%" bgcolor="#000000" border=0 cellspacing=0 cellpadding=20>
+<tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2>
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0 style="table-layout:fixed;">
+<tr><td width="50"><img src="icon_articles.png"></td>
+<td width="100%"><font face="Verdana, Tahoma, Helvetica" size=2><font color="#ffffcc">
+<font color="#ffffff" size=2><b> &nbsp; 2D OBB Intersection</b></font><br>
+ &nbsp; Submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'morgan' +  '@' + 'cs' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'brown.edu\">' + 'Morgan McGuire' + '</a>')</script></font></font></td></tr></table>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+For 2D graphics or movement of 3D objects on a 2D ground plane it is often
+useful to discover if the 2D oriented bounding boxes of two objects overlap
+(have a non-empty intersection).  One motivating example is the placement of
+a new building in a Real-Time Strategy game.  The UI needs to continuously 
+check whether the footprint of the new building overlaps the footprint of
+any existing building.  If there is any overlap, the UI should indicate that
+is an illegal placement.
+Stefan Gottschalk's thesis (Collision Queries using Oriented Bounding
+Boxes, Ph.D. Thesis, Department of Computer Science, University of North
+Carolina at Chapel Hill, 1999) introduces the separating-axis method
+for performing the equivalent test on 3D oriented bounding boxes.
+This method depends on the observation that
+for two boxes to be disjoint (i.e. *not* intersecting), there must be some axis
+along which their projections are disjoint.  The 3D case considers each of 15
+ axes as a potential
+separating axis.  These axes are the three edge axes of box 1, the three edge
+axes of box 2, and the nine cross products formed by taking some edge of box 1
+and some edge of box 2.  
+In 2D this simplifies dramatically and only four axes need be considered. 
+These are
+the orthogonal edges of each bounding box.  If a few values are precomputed
+every time a box moves, we end up performing only 16 dot products and some
+comparisons in the worst case for each overlap test. One nice property of the
+separating-axis method is that it can be
+structured in an early out fashion, so that many fewer operations are needed in
+the case where the boxes do not intersect.  In general, the first test is
+extremely
+likely to fail (and return "no overlap") when there is no overlap.  If it
+passes,
+the second test is even more likely to fail if there is no overlap, and so on. 
+Only when the boxes are in extremely close proximity is there even a 50% chance
+of
+executing more than 2 tests.
+The C++ code sample provided efficiently computes this fast 2D oriented
+bounding box
+overlap.  I augmented the OBB2D class with some methods for rendering and
+construction to help visualize the result.  OBB2D::overlaps1Way performs the
+real work.  It tests to see whether the box passed as an argument overlaps the
+current box along either of the current box's dimensions.  Note that this test
+must be performed for each box on the other to determine whether there is truly
+any overlap.  To make the tests extremely efficient, OBB2D::origin stores the
+projection of corner number zero onto a box's axes and the axes are stored
+explicitly in OBB2D::axis.  The magnitude of these stored axes is the inverse
+of the corresponding edge length so that all overlap tests can be performed on
+the interval [0, 1] without normalization, and square roots are avoided
+throughout the entire class.
+</font>
+</font>
+</td>
+</tr>
+</table>
+
+<font size=1><br></font>
+<table width="95%" bgcolor="#000000" border=0 cellspacing=0 cellpadding=20 style="table-layout:fixed;">
+<tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2>
+<b>Download Associated File: <a href="2dobb.h">2dobb.h</a></b> (5,908 bytes)<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">--------------------------------------------------------------------
+2D OBB Intersection<br><br>For 2D graphics or movement of 3D objects on a 2D ground plane it is often
+useful to discover <font color="#0000ff">if</font> the 2D oriented bounding boxes of two objects overlap
+(have a non-empty intersection).  One motivating example is the placement of
+a <font color="#0000ff">new</font> building in a Real-Time Strategy game.  The UI needs to continuously 
+check whether the footprint of the <font color="#0000ff">new</font> building overlaps the footprint of
+any existing building.  If there is any overlap, the UI should indicate that
+is an illegal placement.<br><br>Stefan Gottschalk's thesis (Collision Queries <font color="#0000ff">using</font> Oriented Bounding
+Boxes, Ph.D. Thesis, Department of Computer Science, University of North
+Carolina at Chapel Hill, 1999) introduces the separating-axis method
+<font color="#0000ff">for</font> performing the equivalent test on 3D oriented bounding boxes.
+This method depends on the observation that
+<font color="#0000ff">for</font> two boxes to be disjoint (i.e. *not* intersecting), there must be some axis
+along which their projections are disjoint.  The 3D <font color="#0000ff">case</font> considers each of 15
+ axes as a potential
+separating axis.  These axes are the three edge axes of box 1, the three edge
+axes of box 2, and the nine cross products formed by taking some edge of box 1
+and some edge of box 2.  <br><br>In 2D <font color="#0000ff">this</font> simplifies dramatically and only four axes need be considered. 
+These are
+the orthogonal edges of each bounding box.  If a few values are precomputed
+every time a box moves, we end up performing only 16 dot products and some
+comparisons in the worst <font color="#0000ff">case</font> <font color="#0000ff">for</font> each overlap test. One nice property of the
+separating-axis method is that it can be
+structured in an early out fashion, so that many fewer operations are needed in
+the <font color="#0000ff">case</font> where the boxes <font color="#0000ff">do</font> not intersect.  In general, the first test is
+extremely
+likely to fail (and <font color="#0000ff">return</font> "no overlap") when there is no overlap.  If it
+passes,
+the second test is even more likely to fail <font color="#0000ff">if</font> there is no overlap, and so on. 
+Only when the boxes are in extremely close proximity is there even a 50% chance
+of
+executing more than 2 tests.<br><br>The C++ code sample provided efficiently computes <font color="#0000ff">this</font> fast 2D oriented
+bounding box
+overlap.  I augmented the OBB2D <font color="#0000ff">class</font> with some methods <font color="#0000ff">for</font> rendering and
+construction to help visualize the result.  OBB2D::overlaps1Way performs the
+real work.  It tests to see whether the box passed as an argument overlaps the
+current box along either of the current box's dimensions.  Note that <font color="#0000ff">this</font> test
+must be performed <font color="#0000ff">for</font> each box on the other to determine whether there is truly
+any overlap.  To make the tests extremely efficient, OBB2D::origin stores the
+projection of corner number zero onto a box's axes and the axes are stored
+explicitly in OBB2D::axis.  The magnitude of these stored axes is the inverse
+of the corresponding edge length so that all overlap tests can be performed on
+the interval [0, 1] without normalization, and square roots are avoided
+throughout the entire class.<br><br>Morgan McGuire morgan@cs.brown.edu<br><br><br><br><font color="#0000ff">class</font> OBB2D {
+<font color="#0000ff">private</font>:
+    <font color="#007f00">/** Corners of the box, where 0 is the lower left. */</font>
+    Vector2         corner[4];<br><br>    <font color="#007f00">/** Two edges of the box extended away from corner[0]. */</font>
+    Vector2         axis[2];<br><br>    <font color="#007f00">/** origin[a] = corner[0].dot(axis[a]); */</font>
+    <font color="#0000ff">double</font>          origin[2];<br><br>    <font color="#007f00">/** Returns true if other overlaps one dimension of this. */</font>
+    <font color="#0000ff">bool</font> overlaps1Way(<font color="#0000ff">const</font> OBB2D& other) <font color="#0000ff">const</font> {
+        <font color="#0000ff">for</font> (<font color="#0000ff">int</font> a = 0; a &lt; 2; ++a) {<br><br>            <font color="#0000ff">double</font> t = other.corner[0].dot(axis[a]);<br><br>            <font color="#007f00">// Find the extent of box 2 on axis a
+</font>            <font color="#0000ff">double</font> tMin = t;
+            <font color="#0000ff">double</font> tMax = t;<br><br>            <font color="#0000ff">for</font> (<font color="#0000ff">int</font> c = 1; c &lt; 4; ++c) {
+                t = other.corner[c].dot(axis[a]);<br><br>                <font color="#0000ff">if</font> (t &lt; tMin) {
+                    tMin = t;
+                } <font color="#0000ff">else</font> <font color="#0000ff">if</font> (t > tMax) {
+                    tMax = t;
+                }
+            }<br><br>            <font color="#007f00">// We have to subtract off the origin
+</font>
+            <font color="#007f00">// See if [tMin, tMax] intersects [0, 1]
+</font>            <font color="#0000ff">if</font> ((tMin > 1 + origin[a]) || (tMax &lt; origin[a])) {
+                <font color="#007f00">// There was no intersection along this dimension;
+</font>                <font color="#007f00">// the boxes cannot possibly overlap.
+</font>                <font color="#0000ff">return</font> <font color="#0000ff">false</font>;
+            }
+        }<br><br>        <font color="#007f00">// There was no dimension along which there is no intersection.
+</font>        <font color="#007f00">// Therefore the boxes overlap.
+</font>        <font color="#0000ff">return</font> <font color="#0000ff">true</font>;
+    }<br><br>
+    <font color="#007f00">/** Updates the axes after the corners move.  Assumes the
+        corners actually form a rectangle. */</font>
+    <font color="#0000ff">void</font> computeAxes() {
+        axis[0] = corner[1] - corner[0]; 
+        axis[1] = corner[3] - corner[0]; <br><br>        <font color="#007f00">// Make the length of each axis 1/edge length so we know any
+</font>        <font color="#007f00">// dot product must be less than 1 to fall within the edge.
+</font>
+        <font color="#0000ff">for</font> (<font color="#0000ff">int</font> a = 0; a &lt; 2; ++a) {
+            axis[a] /= axis[a].squaredLength();
+            origin[a] = corner[0].dot(axis[a]);
+        }
+    }<br><br><font color="#0000ff">public</font>:<br><br>    OBB2D(<font color="#0000ff">const</font> Vector2& center, <font color="#0000ff">const</font> <font color="#0000ff">double</font> w, <font color="#0000ff">const</font> <font color="#0000ff">double</font> h, <font color="#0000ff">double</font> angle)
+{
+        Vector2 X( cos(angle), sin(angle));
+        Vector2 Y(-sin(angle), cos(angle));<br><br>        X *= w / 2;
+        Y *= h / 2;<br><br>        corner[0] = center - X - Y;
+        corner[1] = center + X - Y;
+        corner[2] = center + X + Y;
+        corner[3] = center - X + Y;<br><br>        computeAxes();
+    }<br><br>
+    <font color="#007f00">/** For testing purposes. */</font>
+    <font color="#0000ff">void</font> moveTo(<font color="#0000ff">const</font> Vector2& center) {
+        Vector2 centroid = (corner[0] + corner[1] + corner[2] + corner[3]) / 4;<br><br>        Vector2 translation = center - centroid;<br><br>        <font color="#0000ff">for</font> (<font color="#0000ff">int</font> c = 0; c &lt; 4; ++c) {
+            corner[c] += translation;
+        }<br><br>        computeAxes();
+    }<br><br>    <font color="#007f00">/** Returns true if the intersection of the boxes is non-empty. */</font>
+    <font color="#0000ff">bool</font> overlaps(<font color="#0000ff">const</font> OBB2D& other) <font color="#0000ff">const</font> {
+        <font color="#0000ff">return</font> overlaps1Way(other) && other.overlaps1Way(*<font color="#0000ff">this</font>);
+    }<br><br>    <font color="#0000ff">void</font> render() <font color="#0000ff">const</font> {
+        glBegin(GL_LINES);
+            <font color="#0000ff">for</font> (<font color="#0000ff">int</font> c = 0; c &lt; 5; ++c) {
+              glVertex2fv(corner[c & 3]);
+            }
+        glEnd();
+    }
+};
+ </font></pre></td></tr></table></div></center>
+</font>
+</td>
+</tr>
+</table>
+
+<br>
+
+<center><font face="Verdana, Tahoma" color="#ffffff" size=1>The zip file viewer built into the Developer Toolbox made use
+of the <a href="http://www.gzip.org/zlib/">zlib</a> library, as well as the <a href="http://www.winimage.com/zLibDll/">zlibdll</a> source additions.</font></center>
+<br>
+</center> 
+<center><table cellspacing=0 cellpadding=2 border=0 width="100%"><tr><td background="comments_bar2.jpg" bgcolor="#333333" width="100" valign="center"><font size=1>&nbsp;</font></td></tr></table></center>
+</td></tr></table>
+<br>
+
+
+<a name="comments">
+
+</center>
+
+<center><font face="Arial, Helvetica" size=1><font face="Helvetica,Tahoma,Verdana" size=1>Copyright 1999-2008 (C) FLIPCODE.COM and/or the original content author(s).  All rights reserved.</font> <center><font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></font></center>
+<br>
+</body>
+</html>
+

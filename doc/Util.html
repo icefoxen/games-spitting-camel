@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Timer.html">
+<link rel="next" href="Vector2d.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Util</title>
+</head>
+<body>
+<div class="navbar"><a href="Timer.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Vector2d.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Util.html">Util</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Util: <code class="code">sig</code> <a href="Util.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">val</span> <a name="VALstring_of_bool"></a>string_of_bool : <code class="type">bool -> string</code></pre><pre><span class="keyword">val</span> <a name="VALpi"></a>pi : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VALtwoPi"></a>twoPi : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VALdegrees"></a>degrees : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VALradians"></a>radians : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VALhalfSqrt3"></a>halfSqrt3 : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VALhalfSqrt2"></a>halfSqrt2 : <code class="type">float</code></pre><pre><span class="keyword">val</span> <a name="VAL(<<)"></a>(&lt;&lt;) : <code class="type">('a -> 'b) -> ('c -> 'a) -> 'c -> 'b</code></pre><pre><span class="keyword">val</span> <a name="VAL(>>)"></a>(&gt;&gt;) : <code class="type">('a -> 'b) -> ('b -> 'c) -> 'a -> 'c</code></pre><pre><span class="keyword">val</span> <a name="VALdelay"></a>delay : <code class="type">('a -> 'b) -> 'a -> unit -> 'b</code></pre><pre><span class="keyword">val</span> <a name="VALdelay2"></a>delay2 : <code class="type">('a -> 'b -> 'c) -> 'a -> 'b -> unit -> 'c</code></pre><pre><span class="keyword">val</span> <a name="VALwrap"></a>wrap : <code class="type">('a -> 'b) -> (unit -> unit) -> (unit -> unit) -> 'a -> 'b</code></pre><pre><span class="keyword">val</span> <a name="VALbefore"></a>before : <code class="type">('a -> 'b) -> (unit -> unit) -> 'a -> 'b</code></pre><pre><span class="keyword">val</span> <a name="VALexplode2"></a>explode2 : <code class="type">('a -> 'b -> 'c) -> 'a * 'b -> 'c</code></pre><pre><span class="keyword">val</span> <a name="VALimplode2"></a>implode2 : <code class="type">('a * 'b -> 'c) -> 'a -> 'b -> 'c</code></pre><pre><span class="keyword">val</span> <a name="VALpowerOfTwo"></a>powerOfTwo : <code class="type">int -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALabsf"></a>absf : <code class="type">float -> float</code></pre><pre><span class="keyword">val</span> <a name="VALwithin"></a>within : <code class="type">float -> float -> float -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALinitGL"></a>initGL : <code class="type">int -> int -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALinit"></a>init : <code class="type">?title:string -> int -> int -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALquit"></a>quit : <code class="type">unit -> 'a</code></pre></body></html>

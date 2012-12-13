@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Audio.html">
+<link rel="next" href="Cfgparse.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Cfg</title>
+</head>
+<body>
+<div class="navbar"><a href="Audio.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Cfgparse.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Cfg.html">Cfg</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Cfg: <code class="code">sig</code> <a href="Cfg.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">exception</span> <a name="EXCEPTIONCfg_error"></a>Cfg_error <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre><span class="keyword">type</span> <a name="TYPEconfig"></a><code class="type"></code>config = <code class="type">(string, <a href="Cfgtype.html#TYPEcfgval">Cfgtype.cfgval</a>) Hashtbl.t</code> </pre>
+
+<pre><span class="keyword">val</span> <a name="VALloadFile"></a>loadFile : <code class="type">string -> <a href="Cfg.html#TYPEconfig">config</a></code></pre><pre><span class="keyword">val</span> <a name="VALget"></a>get : <code class="type"><a href="Cfg.html#TYPEconfig">config</a> -> string -> <a href="Cfgtype.html#TYPEcfgval">Cfgtype.cfgval</a></code></pre><pre><span class="keyword">val</span> <a name="VALgetString"></a>getString : <code class="type"><a href="Cfg.html#TYPEconfig">config</a> -> string -> string</code></pre><pre><span class="keyword">val</span> <a name="VALgetInt"></a>getInt : <code class="type"><a href="Cfg.html#TYPEconfig">config</a> -> string -> int</code></pre><pre><span class="keyword">val</span> <a name="VALgetFloat"></a>getFloat : <code class="type"><a href="Cfg.html#TYPEconfig">config</a> -> string -> float</code></pre><pre><span class="keyword">val</span> <a name="VALstring_of_cfgval"></a>string_of_cfgval : <code class="type"><a href="Cfgtype.html#TYPEcfgval">Cfgtype.cfgval</a> -> string</code></pre></body></html>

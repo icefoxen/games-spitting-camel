@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Drawing.html">
+<link rel="next" href="Lines.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Input</title>
+</head>
+<body>
+<div class="navbar"><a href="Drawing.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Lines.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Input.html">Input</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Input: <code class="code">sig</code> <a href="Input.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">exception</span> <a name="EXCEPTIONInputError"></a>InputError <span class="keyword">of</span> <code class="type">string</code></pre>
+<br><code><span class="keyword">type</span> <a name="TYPEinputContext"></a><code class="type">'a</code> inputContext = {</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>pressCallbacks&nbsp;: <code class="type">(Sdlkey.t * (Sdlevent.keyboard_event -> 'a -> 'a)) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>holdCallbacks&nbsp;: <code class="type">(Sdlkey.t * ('a -> 'a)) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>moveCallbacks&nbsp;: <code class="type">(Sdlevent.mousemotion_event -> 'a -> 'a) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>clickCallbacks&nbsp;: <code class="type">(Sdlmouse.button * (Sdlevent.mousebutton_event -> 'a -> 'a)) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>quitCallbacks&nbsp;: <code class="type">('a -> 'a) list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>keystate&nbsp;: <code class="type">Sdlkey.t list</code>;</code></td>
+
+</tr></table>
+}
+
+
+<pre><span class="keyword">val</span> <a name="VALcreateContext"></a>createContext : <code class="type">unit -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALclearInputstate"></a>clearInputstate : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindButtonPress"></a>bindButtonPress : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -><br>       Sdlkey.t -> (Sdlevent.keyboard_event -> 'a -> 'a) -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindButtonHold"></a>bindButtonHold : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> Sdlkey.t -> ('a -> 'a) -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindMouseMove"></a>bindMouseMove : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -><br>       (Sdlevent.mousemotion_event -> 'a -> 'a) -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindMouseClick"></a>bindMouseClick : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -><br>       Sdlmouse.button -><br>       (Sdlevent.mousebutton_event -> 'a -> 'a) -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindMouseDrag"></a>bindMouseDrag : <code class="type">'a -> 'b -> 'c -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALbindQuit"></a>bindQuit : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> ('a -> 'a) -> 'a <a href="Input.html#TYPEinputContext">inputContext</a></code></pre><pre><span class="keyword">val</span> <a name="VALbindMany"></a>bindMany : <code class="type">('a -> 'b -> 'c -> 'a) -> 'a -> ('b * 'c) list -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALisKeyPressed"></a>isKeyPressed : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> Sdlkey.t -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALdoHoldCallbacks"></a>doHoldCallbacks : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALdoPressCallbacks"></a>doPressCallbacks : <code class="type">Sdlevent.keyboard_event -> 'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALdoMoveCallbacks"></a>doMoveCallbacks : <code class="type">Sdlevent.mousemotion_event -> 'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALdoClickCallbacks"></a>doClickCallbacks : <code class="type">Sdlevent.mousebutton_event -> 'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALdoQuitCallbacks"></a>doQuitCallbacks : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a</code></pre><pre><span class="keyword">val</span> <a name="VALdoInput"></a>doInput : <code class="type">'a <a href="Input.html#TYPEinputContext">inputContext</a> -> 'a -> 'a <a href="Input.html#TYPEinputContext">inputContext</a> * 'a</code></pre><pre><span class="keyword">val</span> <a name="VALstring_of_key"></a>string_of_key : <code class="type">Sdlkey.t -> string</code></pre><pre><span class="keyword">val</span> <a name="VALkey_of_string"></a>key_of_string : <code class="type">string -> Sdlkey.t</code></pre><pre><span class="keyword">val</span> <a name="VALstring_of_keystate"></a>string_of_keystate : <code class="type">Sdlevent.keyboard_event -> string</code></pre></body></html>

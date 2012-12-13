@@ -1,0 +1,17 @@
+Spitting Camel is a game engine, written in OCaml, for 2D games.  It
+uses SDL and OpenGL.
+
+There is a lot of functionality it doesn't include...  At least some of this
+is because it is included in the underlying SDL or OpenGL libraries, and there
+is no meaningful functionality I can add to it.
+Example: Functions to do funky things to sound and music are not included,
+because they would essentially just be meaningless wrappers around the
+OCamlSDL library functions that do the same things.
+
+
+XXX: We should do screenworld-vs-gameworld translation at some point!
+--> OpenGL handles this.
+
+XXX: Particles?
+
+XXX: Billboards!

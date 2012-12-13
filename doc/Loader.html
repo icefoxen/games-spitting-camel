@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Lines.html">
+<link rel="next" href="Resources.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Loader</title>
+</head>
+<body>
+<div class="navbar"><a href="Lines.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Resources.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Loader.html">Loader</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Loader: <code class="code">sig</code> <a href="Loader.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">exception</span> <a name="EXCEPTIONLoaderException"></a>LoaderException <span class="keyword">of</span> <code class="type">string</code></pre>
+<pre><span class="keyword">val</span> <a name="VALlittle_endian"></a>little_endian : <code class="type">bool Pervasives.ref</code></pre><pre><span class="keyword">val</span> <a name="VALcanonifySurface"></a>canonifySurface : <code class="type">Sdlvideo.surface -> Sdlvideo.surface</code></pre><pre><span class="keyword">val</span> <a name="VALloadImg"></a>loadImg : <code class="type">string -> Sdlvideo.surface</code></pre><pre><span class="keyword">val</span> <a name="VALdebug"></a>debug : <code class="type">[< Raw.ikind ] Raw.t -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALtexture_of_surf"></a>texture_of_surf : <code class="type">[ `texture_1d | `texture_2d ] -> Sdlvideo.surface -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALtexture2d_of_surface"></a>texture2d_of_surface : <code class="type">Sdlvideo.surface -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALtexture1d_of_surface"></a>texture1d_of_surface : <code class="type">Sdlvideo.surface -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALloadTexture"></a>loadTexture : <code class="type">[ `texture_1d | `texture_2d ] -> string -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALloadTexture2d"></a>loadTexture2d : <code class="type">string -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALloadTexture1d"></a>loadTexture1d : <code class="type">string -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALloadSound"></a>loadSound : <code class="type">string -> Sdlmixer.chunk</code></pre><pre><span class="keyword">val</span> <a name="VALloadConfig"></a>loadConfig : <code class="type">string -> <a href="Cfg.html#TYPEconfig">Cfg.config</a></code></pre><pre><span class="keyword">val</span> <a name="VALloadFont"></a>loadFont : <code class="type">string -> int -> Sdlttf.font</code></pre></body></html>

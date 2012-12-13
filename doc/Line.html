@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Input.html">
+<link rel="next" href="Lines.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Area" rel="Chapter" href="Area.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Driver" rel="Chapter" href="Driver.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Line" rel="Chapter" href="Line.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Line</title>
+</head>
+<body>
+<div class="navbar"><a href="Input.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Lines.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Line.html">Line</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Line: <code class="code">sig</code> <a href="Line.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">type</span> <a name="TYPEline"></a><code class="type"></code>line = <code class="type">float * float * float * float</code> </pre>
+
+<pre><span class="keyword">val</span> <a name="VALisBetween"></a>isBetween : <code class="type">'a -> 'a -> 'a -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALcanonify"></a>canonify : <code class="type">float * float * float * float -> float * float * float</code></pre><pre><span class="keyword">val</span> <a name="VALcolliding"></a>colliding : <code class="type">float * float * float * float -><br>       float * float * float * float -> (float * float) option</code></pre><pre><span class="keyword">val</span> <a name="VALslope"></a>slope : <code class="type">float * float * float * float -> float</code></pre><pre><span class="keyword">val</span> <a name="VALcollidingWithArea"></a>collidingWithArea : <code class="type"><a href="Area.html#TYPEarea">Area.area</a> -> float * float * float * float -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALpointRelative"></a>pointRelative : <code class="type">float * float * float * float -> float -> float -> float</code></pre><pre><span class="keyword">val</span> <a name="VALcreate"></a>create : <code class="type">'a -> 'b -> 'c -> 'd -> 'a * 'b * 'c * 'd</code></pre><pre><span class="keyword">val</span> <a name="VALmove"></a>move : <code class="type">float * float * float * 'a -> float * float -> float * float * float * float</code></pre><pre><span class="keyword">val</span> <a name="VALisVert"></a>isVert : <code class="type">'a * 'b * 'a * 'c -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALisHorz"></a>isHorz : <code class="type">'a * 'b * 'c * 'b -> bool</code></pre><pre><span class="keyword">val</span> <a name="VALstring_of_line"></a>string_of_line : <code class="type">float * float * float * float -> string</code></pre><pre><span class="keyword">val</span> <a name="VALline_of_string"></a>line_of_string : <code class="type">string -> float * float * float * float</code></pre></body></html>

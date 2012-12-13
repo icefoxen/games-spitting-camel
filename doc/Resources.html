@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Loader.html">
+<link rel="next" href="Text.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class attributes" rel=Appendix href="index_attributes.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Audio" rel="Chapter" href="Audio.html">
+<link title="Cfg" rel="Chapter" href="Cfg.html">
+<link title="Cfgparse" rel="Chapter" href="Cfgparse.html">
+<link title="Cfgtype" rel="Chapter" href="Cfgtype.html">
+<link title="Collide" rel="Chapter" href="Collide.html">
+<link title="Drawing" rel="Chapter" href="Drawing.html">
+<link title="Input" rel="Chapter" href="Input.html">
+<link title="Lines" rel="Chapter" href="Lines.html">
+<link title="Loader" rel="Chapter" href="Loader.html">
+<link title="Resources" rel="Chapter" href="Resources.html">
+<link title="Text" rel="Chapter" href="Text.html">
+<link title="Timer" rel="Chapter" href="Timer.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Vector2d" rel="Chapter" href="Vector2d.html"><title>Resources</title>
+</head>
+<body>
+<div class="navbar"><a href="Loader.html">Previous</a>
+&nbsp;<a href="index.html">Up</a>
+&nbsp;<a href="Text.html">Next</a>
+</div>
+<center><h1>Module <a href="type_Resources.html">Resources</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Resources: <code class="code">sig</code> <a href="Resources.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<br><code><span class="keyword">type</span> <a name="TYPEresourcePool"></a><code class="type"></code>resourcePool = {</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>texture&nbsp;: <code class="type">(string, GlTex.texture_id) Hashtbl.t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>sound&nbsp;: <code class="type">(string, Sdlmixer.chunk) Hashtbl.t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>config&nbsp;: <code class="type">(string, <a href="Cfg.html#TYPEconfig">Cfg.config</a>) Hashtbl.t</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>font&nbsp;: <code class="type">(string, Sdlttf.font) Hashtbl.t</code>;</code></td>
+
+</tr></table>
+}
+
+
+<pre><span class="keyword">val</span> <a name="VALcreateResourcePool"></a>createResourcePool : <code class="type">unit -> <a href="Resources.html#TYPEresourcePool">resourcePool</a></code></pre><pre><span class="keyword">val</span> <a name="VALgetTex"></a>getTex : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> GlTex.texture_id</code></pre><pre><span class="keyword">val</span> <a name="VALfreeTex"></a>freeTex : <code class="type">'a -> <a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALgetSound"></a>getSound : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> Sdlmixer.chunk</code></pre><pre><span class="keyword">val</span> <a name="VALfreeSound"></a>freeSound : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALgetConfig"></a>getConfig : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> <a href="Cfg.html#TYPEconfig">Cfg.config</a></code></pre><pre><span class="keyword">val</span> <a name="VALfreeConfig"></a>freeConfig : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> unit</code></pre><pre><span class="keyword">val</span> <a name="VALgetFont"></a>getFont : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> int -> Sdlttf.font</code></pre><pre><span class="keyword">val</span> <a name="VALfreeFont"></a>freeFont : <code class="type"><a href="Resources.html#TYPEresourcePool">resourcePool</a> -> string -> int -> unit</code></pre></body></html>

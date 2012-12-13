@@ -1,0 +1,22 @@
+To do now:
+OH GODS FIXED RATE PHYSICS CODE PLUS INTERPOLATION
+HOW THE FUCK DO I MAKE THAT HAPPEN?!?!
+
+let calcumalate things now = 
+   List.map (fun obj -> let newobj = obj#calc now in
+      (newobj, obj)) things 
+and draw things now = 
+   List.iter (fun (new,old) -> new#drawWithInterpolation old now) things
+;;
+
+Like that.
+
+Better error handling everywhere.
+Document!
+
+
+Improvements:
+ * input.ml: Mouse drag
+ * anim.ml: Figure out what you want to actually do, make it function-y, 
+test it.
+ * Add prefixes to all the module names.
